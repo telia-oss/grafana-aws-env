@@ -1,8 +1,7 @@
-FROM grafana/grafana:latest
+FROM grafana/grafana:5.2.2
 RUN curl -L https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 > /usr/local/bin/aws-env && \
-      cd /usr/local/bin && \
-      echo f80addd4adf9aa8d4ecf1b16de402ba4  aws-env | md5sum -c && \
-      chmod +x aws-env
+      echo f80addd4adf9aa8d4ecf1b16de402ba4  /usr/local/bin/aws-env | md5sum -c && \
+      chmod +x /usr/local/bin/aws-env
 
 COPY entrypoint.sh ./
 ENTRYPOINT ["./entrypoint.sh"]
